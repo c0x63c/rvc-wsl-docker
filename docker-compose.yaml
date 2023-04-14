@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  script:
+    build:
+      context: .
+      dockerfile: ./service/Dockerfile
+    container_name: RVC01
+    tty: true
+    ports:
+      - '7865:7865/tcp'
+    network_mode: 'host'
+    shm_size: '8gb'
+    environment:
+      gpus: 'all'
+    volumes:
+      - ./volumes/weights:/RVC-WebUI/weights
+      - ./volumes/inputs:/inputs
+      - ./volumes/logs:/logs
+    logging:
+      options:
+        max-size: '200k'
+        max-file: '10'
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
