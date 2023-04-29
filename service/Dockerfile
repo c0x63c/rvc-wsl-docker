@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.7.1-base-ubuntu22.04
+FROM nvidia/cuda:11.8.0-base-ubuntu22.04
 
 ENV PYTHONUNBUFFERED=1 
 
@@ -28,7 +28,7 @@ cp -p -r ./hubert_base.pt ./pretrained ./uvr5_weights /RVC-WebUI/. &&  rm -r -f 
 WORKDIR /RVC-WebUI
 
 # requirements pytorch
-RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu117 \
+RUN pip install torch torchvision torchaudio \
 && poetry install
 
 # shell
