@@ -23,7 +23,7 @@ http://localhost:7865
 
 ## Version
 
-* 2023/04/29 CUDA 11.7 -> 11.8
+* 2023/05/20 fix pretrain_v2
 
 ## Acknowledgments
 
