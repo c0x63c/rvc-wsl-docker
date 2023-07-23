@@ -23,7 +23,7 @@ http://localhost:7865
 
 ## Version
 
-* 2023/05/20 fix pretrain_v2
+* 2023/07/21 fix rmvpe
 
 ## Acknowledgments
 

@@ -22,13 +22,13 @@ RUN curl -sSL https://install.python-poetry.org | python3 - && \
 RUN git clone https://github.com/liujing04/Retrieval-based-Voice-Conversion-WebUI.git ./RVC-WebUI
 RUN mkdir /huggingface && cd /huggingface && \
 git init . && git config core.sparsecheckout true && \
-echo -e "\nhubert_base.pt\n/uvr5_weights\n/pretrained\n/pretrained_v2" > .git/info/sparse-checkout && \
+echo -e "\nhubert_base.pt\nrmvpe.pt\n/uvr5_weights\n/pretrained\n/pretrained_v2" > .git/info/sparse-checkout && \
 git remote add origin https://huggingface.co/lj1995/VoiceConversionWebUI.git && git pull origin main && \
-cp -p -r ./hubert_base.pt ./pretrained ./pretrained_v2 ./uvr5_weights /RVC-WebUI/. &&  rm -r -f /huggingface
+cp -p -r ./hubert_base.pt ./rmvpe.pt ./pretrained ./pretrained_v2 ./uvr5_weights /RVC-WebUI/. &&  rm -r -f /huggingface
 WORKDIR /RVC-WebUI
 
 # requirements pytorch
-RUN pip install torch torchvision torchaudio \
+RUN pip install torch torchvision torchaudio torchcrepe \
 && poetry install
 
 # shell
