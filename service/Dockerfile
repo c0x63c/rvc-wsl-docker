@@ -11,13 +11,6 @@ RUN apt update -y -q && DEBIAN_FRONTEND=noninteractive apt install -y -q --no-in
     && ln -s /usr/bin/python3 /usr/bin/python \
     && rm -rf /var/lib/apt/lists/*
 
-# poetry
-ENV POETRY_HOME=/opt/poetry
-RUN curl -sSL https://install.python-poetry.org | python3 - && \
-    cd /usr/local/bin && \
-    ln -s /opt/poetry/bin/poetry && \
-    poetry config virtualenvs.create false
-
 # git
 RUN git clone https://github.com/liujing04/Retrieval-based-Voice-Conversion-WebUI.git ./RVC-WebUI
 RUN mkdir /huggingface && cd /huggingface && \
@@ -28,8 +21,7 @@ cp -p -r ./hubert_base.pt ./rmvpe.pt ./rmvpe.onnx ./pretrained ./pretrained_v2 .
 WORKDIR /RVC-WebUI
 
 # requirements pytorch
-RUN pip install torch torchvision torchaudio torchcrepe \
-&& poetry install
+RUN pip install -r requirements.txt
 
 # shell
 COPY ./service/entrypoint.sh /docker/entrypoint.sh
