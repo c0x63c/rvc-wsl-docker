@@ -21,7 +21,7 @@ cp -p -r ./hubert_base.pt ./rmvpe.pt ./rmvpe.onnx ./pretrained ./pretrained_v2 .
 WORKDIR /RVC-WebUI
 
 # requirements pytorch
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && pip install onnx
 
 # shell
 COPY ./service/entrypoint.sh /docker/entrypoint.sh

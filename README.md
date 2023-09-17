@@ -23,7 +23,7 @@ http://localhost:7865
 
 ## Version
 
-* 2023/08/19 fix rmvpe.onnx & changed to use pip
+* 2023/09/18 fix rmvpe.onnx & changed to use pip
 
 ## Acknowledgments
 
